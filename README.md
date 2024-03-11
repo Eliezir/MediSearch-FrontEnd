@@ -4,6 +4,9 @@
 This is the front end of the MediSearch project. It is a web application that allows users to search for medical professionals and book appointments with them. The front end is built using Vue and the back end is built using Django.</p>
 </div>
 
+![MediSearchHome](readme_images/img.png)
+
+![MediSearchHome](readme_images/video.gif)
 
 ## Technologies Used
 - [Vue.js](https://vuejs.org/)
