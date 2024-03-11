@@ -1,6 +1,8 @@
-# MediSearch - FrontEnd 
-
-This is the front end of the MediSearch project. It is a web application that allows users to search for medical professionals and book appointments with them. The front end is built using React and the back end is built using Node.js and Express.
+<div align="center">
+<img style="height:300px" src="./src/assets/logo-dark.png" alt="project logo"/>
+<p>
+This is the front end of the MediSearch project. It is a web application that allows users to search for medical professionals and book appointments with them. The front end is built using Vue and the back end is built using Django.</p>
+</div>
 
 
 ## Technologies Used
