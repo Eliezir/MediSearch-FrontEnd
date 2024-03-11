@@ -1,13 +1,14 @@
 <template>
   <div class="bg-background pa-4 elevation-1 rounded">
     <v-data-table-server
+      class="bg-background"
       v-model:items-per-page="itemsPerPage"
       :headers="headers"
       :items="serverItems"
-      :items-length="totalItems"
+      items-length="1000"
       :loading="loading"
       :search="search"
-      item-value="name"
+      :page="activePage"
       @update:options="getMedicines"
     ></v-data-table-server>
   </div>
@@ -28,47 +29,38 @@ const defineFilter = (value) => {
 
 const headers = [
   { title: "Substância", value: "substance" },
-  { title: "Laboratory", value: "laboratory"},
+  { title: "Laboratory", value: "laboratory" },
   { title: "CNPJ", value: "cnpj" },
-  { title: "Código", value: "code" },
-  { title: "Preço" , value: "pf_19_percent"}
+  { title: "Preço", value: "pf_19_percent" },
 ];
 
 const itemsPerPage = ref(25);
 const serverItems = ref([]);
 const loading = ref(true);
-const totalItems = ref(itemsPerPage);
+const activePage = ref(1);
 
 const getMedicines = async () => {
-  const limit = itemsPerPage.value;
-  let url;
-  const filters = {};
-  if (search.value.trim() !== "") {
-    filters["search"] = search.value.trim();
-
-    if (filter.value.trim() !== "") {
-      filters["laboratory__icontains"] = filter.value.trim();
-    }
-  }
+  let url = new URL("http://localhost:8000/medicines/");
 
   loading.value = true;
   if (search.value.trim() !== "") {
-    url = new URL("http://localhost:8000/medicines/filter");
+    url = new URL(
+      `http://localhost:8000/medicines/filter/?${filter.value}__contains=${search.value}&page=${activePage.value}`
+    );
 
-    for (const [key, value] of Object.entries(filters)) {
-      url.searchParams.append(key, value);
-    }
   } else {
-    url = new URL("http://localhost:8000/medicines");
+    url = new URL(
+      `http://localhost:8000/medicines/?limit=${itemsPerPage.value}&page=${activePage.value}`
+    );
   }
-
-  // url.searchParams.append("limit", limit);
 
   const response = await fetch(url);
   const data = await response.json();
   loading.value = false;
-  serverItems.value = data;
+  serverItems.value = data.results;
 };
+
+getMedicines();
 
 defineExpose({
   defineSearch,
