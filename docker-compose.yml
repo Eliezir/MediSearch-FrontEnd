@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  vue:
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:3000"
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - BASE_URL=/
+volumes:
+  node_modules:
