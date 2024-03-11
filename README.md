@@ -18,7 +18,9 @@ To run the project, you need to have Docker and Docker Compose installed on your
 
 ```bash
 
-# mkdir MediSearch
+$  mkdir MediSearch
+
+$ cd MediSearch
 
 $ git clone https://github.com/Eliezir/MediSearch-backEnd
 
@@ -26,7 +28,6 @@ $ git clone https://github.com/Eliezir/MediSearch-frontEnd
 
 ```
 create a docker-compose.yml file in the root of the project and add the following content:
-version: "3.8"
 
 ```bash
 
