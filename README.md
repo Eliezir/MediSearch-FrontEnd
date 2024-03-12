@@ -1,7 +1,7 @@
 <div align="center">
 <img style="height:300px" src="./src/assets/logo-dark.png" alt="project logo"/>
 <p>
-This is the front end of the MediSearch project. It is a web application that allows users to search for medical professionals and book appointments with them. The front end is built using Vue and the back end is built using Django.</p>
+MediSearch is a web application that enables users to search for medication prices listed by ANVISA, the Brazilian Health Regulatory Agency. This application is built using the Vue.js framework for the frontend and Django for the backend</p>
 </div>
 
 ![MediSearchHome](readme_images/img.png)
